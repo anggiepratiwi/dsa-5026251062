@@ -10,6 +10,7 @@ public class MonoPrint extends PrintJob {
         return 500 * getPages();
     }
 
+    @Override
     public String label(){
         return "Mono";
     }

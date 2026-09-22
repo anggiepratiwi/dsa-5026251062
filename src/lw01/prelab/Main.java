@@ -9,7 +9,7 @@ public class Main {
         List<PrintJob> jobs = new ArrayList<>();
 
         Scanner scanner = new Scanner(Main.class.getResourceAsStream("jobs.txt"));
-        
+
         while (scanner.hasNext()){
             String type = scanner.next();
             String id = scanner.next();
@@ -25,7 +25,9 @@ public class Main {
 
             jobs.add(job);
         }
-
+        
+        scanner.close();
+        
         for (PrintJob job : jobs){
             System.out.println(job.summary());
         }
