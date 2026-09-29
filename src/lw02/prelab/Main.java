@@ -20,6 +20,8 @@ public class Main {
             transactionList.add(transaction);
         }
 
+        scanner.close();
+
         LinkedList<String[]> customerList = new LinkedList<>();
 
         for(String[] transaction:transactionList) {
@@ -39,13 +41,8 @@ public class Main {
             }
         }
 
-        Queue<String[]> transactionQueue = new LinkedList<>();
-
-        for(String[] transactionData:transactionList){
-            transactionQueue.add(transactionData);
-        }
-
-        Stack<String[]> failedStack = new Stack<>();
+        Queue<String[]> transactionQueue = new LinkedList<>(transactionList);
+        Stack<String[]> failed = new Stack<>();
 
         while(!transactionQueue.isEmpty()){
             String[] transactionData = transactionQueue.poll();
@@ -62,9 +59,8 @@ public class Main {
                         balance += amount;                            
                         customerData[1] = String.valueOf(balance);
                         } else if(type.equals("WITHDRAW")){
-                            
                             if(amount > balance){
-                                failedStack.push(transactionData);
+                                failed.push(transactionData);
                             } else{
                                 balance -= amount;
                                 customerData[1] = String.valueOf(balance);
@@ -75,19 +71,16 @@ public class Main {
                 }
             }
         System.out.println("=== Final Balances ===");
-
         for(String[] customerData:customerList){
             System.out.println(customerData[0] + " : " + customerData[1]);
         }
 
-        System.out.println("=== Failed Transactions ===");
+        System.out.println();
 
-        while(!failedStack.isEmpty()){
-            String[] transactionData = failedStack.pop();
+        System.out.println("=== Failed Transactions ===");
+        while(!failed.isEmpty()){
+            String[] transactionData = failed.pop();
             System.out.println(transactionData[0] + " " + transactionData[1] + " " + transactionData[2]);
         }
-        scanner.close();
     }
 }
-
-
