@@ -8,7 +8,6 @@ import java.util.Set;
 import java.util.LinkedHashSet;
 import java.util.Map;
 
-
 public class Main {
     public static void main(String[] args){
         Scanner scanner1 = new Scanner(Main.class.getResourceAsStream("playlist.txt"));
