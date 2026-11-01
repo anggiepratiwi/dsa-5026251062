@@ -42,6 +42,6 @@ public class Main {
         System.out.println("Registered student: " + participant.size());
         System.out.println("Successful check-ins: " + processed.size());
         System.out.println("Absent students: " + (participant.size()-processed.size()));
-        System.out.println("Rejected attempts: " + rejected);
+        System.out.println("Rejected attempts: " + rejected); 
     }
 }
